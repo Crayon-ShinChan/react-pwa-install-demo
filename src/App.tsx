@@ -11,29 +11,27 @@ Installation probably don't work on stackblitz, it's ok.
 */
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const appName = 'My PWA';
 
-  const [promptEvent, setPromptEvent] = useState(null);
+  // const [promptEvent, setPromptEvent] = useState(null);
   const pwaInstallRef = useRef<PWAInstallElement>(null);
 
   // externalPromptEvent is only if your app is big and slow to start
   // check index.html for additional code.
   // https://github.com/khmyznikov/pwa-install?tab=readme-ov-file#async-mode
-  useEffect(() => {
-    let lastPromptEvent = window.promptEvent;
+  // useEffect(() => {
+  //   let lastPromptEvent = window.promptEvent;
 
-    const intervalId = setInterval(() => {
-      if (window.promptEvent !== lastPromptEvent) {
-        lastPromptEvent = window.promptEvent;
-        setPromptEvent(window.promptEvent);
-      }
-    }, 100);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  //   const intervalId = setInterval(() => {
+  //     if (window.promptEvent !== lastPromptEvent) {
+  //       lastPromptEvent = window.promptEvent;
+  //       setPromptEvent(window.promptEvent);
+  //     }
+  //   }, 100);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
 
   /* buttons was used here just for sample, not a direct guide
   name and icon props was used just for test, prefer manifest in your app.
@@ -57,8 +55,8 @@ function App() {
         ref={pwaInstallRef}
         name={appName}
         icon={logo}
-        externalPromptEvent={promptEvent}
-        onPwaInstallAvailableEvent={(event) => console.log(event)}
+        // externalPromptEvent={promptEvent}
+        // onPwaInstallAvailableEvent={(event) => console.log(event)}
       ></PWAInstall>
     </div>
   );
